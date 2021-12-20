@@ -28,3 +28,11 @@ If you want the Wemos D1 Mini removable:
 - 1 X 2 hole short strip protoboard
 - 2 X female headers for protoboard
 - 2 x male headers for Wemos D1 Mini board
+
+
+To-Do features
+
+- Battery level monitor (Via external LED display or sent with a message)
+- LED indicator of webhook request recieved (reply 200)
+- Add multiple recipients and alert methods to ensure someone responds quickly (neighbors, etc)
+- Configuration via serial or web page instead of compiling in credentials 
