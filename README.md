@@ -36,3 +36,8 @@ To-Do features
 - LED indicator of webhook request recieved (reply 200)
 - Add multiple recipients and alert methods to ensure someone responds quickly (neighbors, etc)
 - Configuration via serial or web page instead of compiling in credentials 
+
+Credits
+
+- Heavily based on this tutorial: https://www.makeuseof.com/tag/wifi-connected-button-esp8266-tutorial/ by Ian Buckley
+- Ian's full original code is available here: https://pastebin.com/mHr7yNYG
