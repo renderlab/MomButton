@@ -16,7 +16,7 @@ Design goals were:
 
 
 Parts List:
-- 	~~1 X Wemos D1 Mini ESP8266 Wifi board	~~
+- 	~~1 X Wemos D1 Mini ESP8266 Wifi board
 - 1 X Wemos D1 Mini PRO ESP8266 Wifi board (See Below note #1)
 - 1 X Hammond 1591MSBK case
 - 1 X Normally open push button switch
