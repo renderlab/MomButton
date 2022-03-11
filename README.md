@@ -38,12 +38,20 @@ Notes:
 - #2: My original design used a momentary switch to wake up the board which would then connect to wifi and execute the IFTTT webhook then go back to sleep.  Basically everything I want to do is done at boot on the board and then it goes to deep sleep till it's reset.  Turns out I'm an idiot.  There's no actual reason to keep the board powered in deep sleep all the time after it's executed or even before.  I could simply have it disconnected from power and use a locking on/off switch or a toggle switch to power the board up to start the alerts.  Since it's a safety device, this means battery life is nearly infinite and the added bonus of being able to modify the code to loop through a bunch of alert types until power was cut or even do things like sound a buzzer alert or something else battery intensive since we can be assured of power being available.
 - #3: Moving the reset input from D0 to ground cut the deepsleep current from 15ma to <1ma.  Turns out that keeping the pin forcably low takes power and since we are resetting the board rather than waking it up, we can save power by just pulling RST straight to ground rather than a LOW GPIO pin.
 
+Assembly:
+
+- Still need to insert pics and such here for my design.  Still refining.
+- Battery holder to the 3.3v input and ground, LED to GPIO pin 5 and ground with resistor inline, and the button between reset and ground.
+- For now, follow the instructions from the below guide on MakeUseOf.com and simply change the "ESP.deepSleep(wakePin)" line to "ESP.deepSleep(0)" which puts the unit to deep sleep until reset (no "soft" wake up)
+
 To-Do features
 
 - Battery level monitor (Via external LED display or sent with a message)
 - LED indicator of webhook request recieved (reply 200)
 - Add multiple recipients and alert methods to ensure someone responds quickly (neighbors, etc)
 - Configuration via serial or web page instead of compiling in credentials 
+- Wall powered version that wakes from deep sleep to read the battery voltage and send a notification
+- A "Grenade" version with a hard on/off swtich (i.e. pull pin and it goes off) that cycles through a whole mess of IFTTT notification methods to multiple people in a loop until turned off.
 
 Credits
 
