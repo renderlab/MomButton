@@ -16,12 +16,14 @@ Design goals were:
 
 
 Parts List:
-- 1 X Wemos D1 Mini ESP8266 Wifi board
+- 	~~1 X Wemos D1 Mini ESP8266 Wifi board	~~
+- 1 X Wemos D1 Mini PRO ESP8266 Wifi board (See Below note #1)
 - 1 X Hammond 1591MSBK case
 - 1 X Normally open push button switch
 - 1 X LED and appropriate resistor
 - 1 X 18650 battery
 - 1 X 18650 battery holder
+- Assorted Wire
 
 If you want the Wemos D1 Mini removable:
 
@@ -29,6 +31,12 @@ If you want the Wemos D1 Mini removable:
 - 2 X female headers for protoboard
 - 2 x male headers for Wemos D1 Mini board
 
+
+Notes:
+
+- #1: Originally was using the Wemos D1 Mini but had no end of problems with standby current draw.  Turns out that the Mini has a standby of about 20ma in deep sleep, so it would suck a 18650 battery dry in a few days which was not optimal.  The Wemos D1 Mini **PRO** however is capable of much lower standby current in deep sleep (<1ma) and a much more appropriate battery life
+- #2: My original design used a momentary switch to wake up the board which would then connect to wifi and execute the IFTTT webhook then go back to sleep.  Basically everything I want to do is done at boot on the board and then it goes to deep sleep till it's reset.  Turns out I'm an idiot.  There's no actual reason to keep the board powered in deep sleep all the time after it's executed or even before.  I could simply have it disconnected from power and use a locking on/off switch or a toggle switch to power the board up to start the alerts.  Since it's a safety device, this means battery life is nearly infinite and the added bonus of being able to modify the code to loop through a bunch of alert types until power was cut or even do things like sound a buzzer alert or something else battery intensive since we can be assured of power being available.
+- #3: Moving the reset input from D0 to ground cut the deepsleep current from 15ma to <1ma.  Turns out that keeping the pin forcably low takes power and since we are resetting the board rather than waking it up, we can save power by just pulling RST straight to ground rather than a LOW GPIO pin.
 
 To-Do features
 
